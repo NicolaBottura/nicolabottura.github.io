@@ -1,0 +1,9 @@
+.social-icons {
+    margin-bottom: 50px;
+}
+
+.social-icon {
+    font-size: 30px;
+    margin-right: 20px;
+    color: #007bff; /* Change the color to match your design - nice red: fb3354 */
+}
