@@ -42,20 +42,100 @@
                     <h2 class="post-title">Keylogger malware</h2>
                 </div>
                 <div class="content-wrapper">
-                    <p>Benvenuti nel mio primo post sul blog! In questo articolo, esploreremo il mondo del keylogger malware e discuteremo i suoi impatti sulla sicurezza informatica.</p>
+                    <p><strong>Updated:</strong> January 29, 2024</p>
+                    <h2><strong>Introduction</strong></h2>
+                    <p>
+                        Greetings and welcome to my blog! In this inaugural post, I am excited to kick off a series focused on the development of malware.
+                        Throughout this series, I will delve into various applications I have created to explore the techniques and functionalities employed by malware.
+                        I firmly believe that the most effective way to comprehend and master a subject is through hands-on, manual involvement.
+                        Therefore, in these personal projects, I will share insights gained from developing intriguing adversarial malware techniques, drawing from my experiences in malware analysis operations.
+                    </p>
 
-                    <p>## Sezione 1: Introduzione</p>
-                    <p>Il keylogger è un tipo di malware progettato per registrare ogni pressione del tasto su una tastiera. Questo articolo fornirà una panoramica dettagliata di cosa sia un keylogger, come funziona e quali minacce può presentare per la sicurezza dei dati.</p>
+                    <p>
+                        Keyloggers represent a particularly malicious category of spyware designed to capture and pilfer consecutive keystrokes, along with additional data, entered by a user on a device.
+                        The term "keylogger" is self-descriptive, as it precisely denotes its function of logging the keystrokes made on a keyboard.
+                        The recorded information is subsequently transmitted to a remote attacker through a command-and-control (C&C) server.
+                        The primary objective of deploying such malware is often to analyze the recorded keystrokes, seeking sensitive information such as login credentials.
+                        
+                        The proof of concept (PoC) is available on my <a href="https://github.com/NicolaBottura/Malware-dev" target="_blank">Github</a> page.
+                        Here, I will share the code for the different applications that I will develop and discuss throughout this series.
+                    </p>
 
-                    <p>## Sezione 2: Funzionamento del Keylogger</p>
-                    <p>Per comprendere appieno il funzionamento di un keylogger, esamineremo le sue tecniche di registrazione delle informazioni e le modalità con cui può essere distribuito.</p>
+                    <h2><strong>Unveiling the functionalities</strong></h2>
+                    <p>
+                        In developing this software, my focus was on incorporating key features essential for a sophisticated spying tool.
+                        Primarily, I implemented a keylogging mechanism that captures and logs keystrokes along with their associated names.
+                        Drawing inspiration from real-world malware, I integrated a foreground window tracking mechanism and a system clipboard data recording feature.
+                        <br><br>
+                        Now, let's delve into the intricate details of the presented functionalities.
+                    </p>
 
-                    <p>## Sezione 3: Impatti sulla Sicurezza</p>
-                    <p>Le potenziali minacce associate ai keylogger rendono essenziale comprendere come proteggere i propri sistemi e dati da tali attacchi. Esploreremo anche le contromisure e le buone pratiche di sicurezza informatica.</p>
+                    <h3><strong>Config</strong></h3>
+                    <p>
+                        I opted to implement three distinct threads through Win32 API <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread" target="_blank">CreateThread</a> each operating
+                        independently to manage one of the three designated functionalities.
+                        This approach not only allowed for parallel processing but also provided the flexibility to terminate a thread after a specified duration, subsequently closing the entire application.
+                        It's worth noting that in this simplified scenario, I chose to shut down all operations after a certain time interval.
+                        However, during the development phase, I contemplated incorporating additional actions after a designated period, such as sending accumulated data to the remote Command and Control (C2) server, maybe in the future I will update this post including this functionality.
+                        <br><br>
+                        To introduce a delay, I utilized <a href="https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects" target="_blank">WaitForMultipleObjects</a>, setting a wait time of 10 seconds.
+                        Following this delay, the application closes the relevant handles and writes the collected data in a formatted manner to the output file. 
+                    </p>
 
-                    <!-- Continua a aggiungere paragrafi e sezioni secondo necessità -->
+                    <h3><strong>Keylogging</strong></h3>
+                    <p>
+                        To capture all pressed keys, I utilized the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexw" target="_blank">SetWindowsHookEx</a> API, which registers an application-defined hook procedure within a hook chain.
+                        Specifically, I employed the <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/about-hooks#wh_keyboard_ll" target="_blank">WH_KEYBOARD_LL</a> hook procedure, which installs a hook to monitor low-level keyboard input events.
+                        Whenever a key is pressed, the system triggers a procedure named <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/lowlevelkeyboardproc" target="_blank">LowLevelKeyboardProc</a>, acting as a placeholder for the function defined during the SetWindowsHookEx call—in this case, <strong>KeyboardHook</strong>.
+                        <br><br>
+                        The magic unfolds within the KeyboardHook callback, taking <i>nCode</i>, <i>wParam</i>, and <i>lParam</i> as its arguments.
+                        The latter two arguments are pivotal for our task; <i>wParam</i> holds the identifier of the keyboard message, indicating the keyboard event that triggered the procedure.
+                        In this context, we are interested in wParam having a value equal to <strong>WM_KEYDOWN</strong>, signifying the event of pressing a key on the keyboard.
+                        <br><br>
+                        Meanwhile, <i>lParam</i> serves as a pointer to a structure named <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct" target="_blank">KBDLLHOOKSTRUCT</a>, furnishing information about a low-level keyboard input event.
+                        This structure allows access to various details about the event, including the name of the pressed key.
+                        To extract the name, I leveraged the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeynametextw" target="_blank">GetKeyNameText</a> API, requiring a 32-bit (LONG) value as its initial argument, encompassing the scan code (field <strong>scanCode</strong>) and the extended-key flag (field <strong>flags</strong>).
+                        In the MSDN page for GetKeyNameText documentation we can see how the function interprets bits in the lParam:
+                        <br><br>
+                        <figure>
+                            <img src="images/P1-keylogger/keystroke_message_flags.png" alt="lParam bits" class="centered-image">
+                            <figcaption class="centered-caption">
+                                <strong>Figure 1:</strong> <u>Keystroke Message Flags</u>
+                            </figcaption>
+                        </figure>
+                        To prepare the correct LONG value that need to be passed to GetKeyNameText API I used the Following expression:
+                        <code>
+                            LONG msg = 1 + (kInfo->scanCode << 16) + (kInfo->flags << 24);
+                        </code>
+                        Breaking down each element:
+                        <ul>
+                            <li><strong>kInfo->scanCode:</strong> Represents the scan code of the pressed or released key, a hardware-specific code uniquely identifying a key irrespective of the active keyboard layout.</li>
+                            <li><strong>kInfo->flags:</strong> Signifies the extended-key flag, indicating whether the key is an extended key (e.g., right-hand ALT or CTRL keys).</li>
+                            <li><strong><<:</strong> The bitwise operator used to position the bits of the two struct's elements as required by GetKeyNameText.</li>
+                        </ul>
+                        In this way I wanted to combine the values in order to format the bits as described in <strong>Figure 1</strong>, so having:
+                        <ul>
+                            <li>From bit 16 to 23 the value of <i>kInfo->flags</i></li>
+                            <li>At bit 24 the value of <i>kInfo->flags</i></li>
+                        </ul>
+                        At this point it is possible to retrieve the name of the pressed key in a human-readable form.
+                    </p>
 
-                    <p>Ricordate sempre di mantenere i vostri sistemi aggiornati e di adottare pratiche di sicurezza informatica robuste per proteggere le vostre informazioni personali.</p>
+                    <h3><strong>Foreground Window</strong></h3>
+                    <p>
+                        Int his context, I aimed to capture the name of the window currently active in use by the user. TO achieve this, I utilized <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getforegroundwindow" target="_blank">GetForegroundWindow</a> API to obtain a handle
+                        for the foregorund window. A change in the handle implies a shift in the user's focus to a different window. In such cases, I then used the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowtextw" target="_blank">GetWindowText</a> API
+                        to retrieve the name of the newly activated window. The code implementation for this functionality is straightforward and easy to comprehend.
+                    </p>
+
+                    <h3><strong>Clipboard Data</strong></h3>
+                    <p>
+                        The clipboard serves as a temporary storage buffer facilitating the transfer of data within and between applications. Simply put, when a used executes a copy action (e.g. CTRL+C or right-click and Copy), the copied data resides in the clipboard.
+                        My objective was to log this type of data.
+                        Accordiong to <a href="https://learn.microsoft.com/en-us/windows/win32/dataxchg/using-the-clipboard#monitoring-clipboard-contents" target="_blank">MSDN</a>, there are primarly three methods for monitoring clipboard changes, with the recommended one being the creation of a clipboard format listener - a window registered to receive notifications
+                        when the clipboard contents change. To establish a window as a clipboard format listener, the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-addclipboardformatlistener" target="_blank">AddClipboardFormatListener</a> API is called.
+                        Consequently, I created a dedicated window for this purpose. Upon a change in the clipboard content, the window receives a <strong>WM_CLIPBOARDUPDATE</strong> message. At this point, I retrieve the clipboard data by simply invoking the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getclipboarddata" target="_blank">GetClipboardData</a> API. 
+                    </p>
                 </div>
             </div>
         </div>
