@@ -1,0 +1,262 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light Grayish Blue */
+    color: #333;
+    overflow-x: hidden;
+    background: url('/assets/img/covers/background.jpg') center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+.nav {
+    background-color: #495057; /* Medium Gray */
+    padding: 1em 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Set a high z-index value to ensure it's above other elements */
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 1em;
+    margin: 0 1em;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #6c757d; /* Darker Gray on Hover */
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropbtn {
+    padding: 1em;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#profile {
+    background-color: #343a40; /* Light Gray */
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+
+.header {
+    background-color: #343a40; /* Dark Gray */
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 80px; /* Adjust the margin-top value to leave space for the fixed navbar */
+    position: relative; /* Add this line */
+    z-index: 1; /* Set a z-index value to position it above the other elements */
+}
+
+.profile-picture {
+    width: 200px; /* Adjust the size as needed */
+    height: 200px; /* Adjust the size as needed */
+    border-radius: 50%; /* To make it a circular image */
+    margin-top: 25px;    
+}
+
+.social-icons {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.social-icon {
+    font-size: 30px;
+    margin-right: 10px;
+    color: #007bff; /* Change the color to match your design - nice red: fb3354, nice blue: 007bff */
+}
+
+.social-icon:hover {
+    opacity: 0.8;
+}
+
+section {
+    padding: 2em;
+    margin: 2em 0;
+}
+
+#biography {
+    background-color: #f0f0f0; /* Light Gray */
+}
+
+#education {
+    background-color: #e0e0e0; /* Lighter Gray */
+}
+
+#blog {
+    background-color: #d0d0d0; /* Even Lighter Gray */
+}
+
+#contact {
+    background-color: #c0c0c0; /* Almost White Gray */
+}
+
+#malware-dev {
+    background-color: #d0d0d0; /* Light Gray */
+}
+
+#post {
+    background-color: #d0d0d0;
+}
+
+h2 {
+    color: #343a40; /* Dark Gray */
+}
+
+footer {
+    background-color: #495057;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Position relative to its normal position */
+    bottom: 0; /* Position at the bottom */
+    width: 100%; /* Full width */
+}
+
+.blog-post {
+    display: flex;
+    align-items: center;
+    margin-top: -30px;
+    margin-left: 40px; /* Adjust the margin for space on the left */
+    margin-right: 40px; /* Adjust the margin for space on the right */
+}
+
+.blog-post img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5%;
+}
+
+.post-details h4 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: inherit;
+}
+
+.small-text {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.banner-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    box-shadow: 0 0 5px black;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}
+
+.post-title {
+    position: absolute;
+    bottom: 20px; /* Adjust the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff; /* Adjust text color as needed */
+    text-align: center;
+    margin: 0;
+    font-size: 2.5rem; /* Adjust font size as needed */
+    z-index: 1;
+    text-shadow: -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000, 2px 2px 2px #000;
+}
+
+.post-img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 0 5px black;
+}
+
+.img-caption {
+    margin-top: 10px;
+    text-align: center;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    overflow-x: auto;
+    margin: 10px 0;
+    box-shadow: 0 0 5px black;
+}
+
+/* Add a media query for responsiveness */
+@media (max-width: 768px) {
+    .blog-post {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 10px; /* Adjust the margin for space on the left on smaller screens */
+        margin-right: 10px; /* Adjust the margin for space on the right on smaller screens */
+    }
+
+    .blog-post img {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        object-position: center -80px;
+    }
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    white-space: pre;
+  }

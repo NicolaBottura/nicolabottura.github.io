@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicola Bottura</title>
+    <!-- Include your custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- Include Font Awesome CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Add favicon -->
+    <link rel="icon" href="../../assets/img/favicon.ico">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="nav">
+    <div class="container">
+        <a href="../../index.html">Home</a>
+        <a href="../../posts/posts-list.html">Posts list</a>
+        <a href="#">Back to top</a>
+    </div>
+</nav>
+
+<section id="post" class="container" style="margin-top: 80px">
+    <div class="banner-image-wrapper">
+        <img src="../../assets/img/covers/cover-p1.jpg" class="img-fluid banner-image" alt="Post 1 Image">
+        <h2 class="post-title">Keylogger malware</h2>
+    </div>
+
+    <p style="font-size: 0.8em; color: inherit;"><strong>Updated:</strong> January 29, 2024</p>
+
+    <h1><strong>Introduction</strong></h1>
+    <p>
+        Greetings and welcome to my blog! In this inaugural post, I am excited to kick off a series focused on the understanding of how certain malware techniques works.
+        Throughout this series, I will delve into various applications I have created to explore the techniques and functionalities employed by malware.
+        I firmly believe that the most effective way to comprehend and master a subject is through hands-on, manual involvement.
+        Therefore, in these personal projects, I will share insights gained from developing intriguing adversarial malware techniques, drawing from my experiences in malware analysis operations.
+    </p>
+
+    <p>
+        Keyloggers represent a particularly malicious category of spyware designed to capture and pilfer consecutive keystrokes, along with additional data, entered by a user on a device.
+        The term "keylogger" is self-descriptive, as it precisely denotes its function of logging the keystrokes made on a keyboard.
+        The recorded information is subsequently transmitted to a remote attacker through a command-and-control (C&C) server.
+        The primary objective of deploying such malware is often to analyze the recorded keystrokes, seeking sensitive information such as login credentials.
+        
+        The proof of concept (PoC) is available on my <a href="https://github.com/NicolaBottura/Malware-dev" target="_blank">Github</a> page.
+    </p>
+
+    <h1><strong>Unveiling the functionalities</strong></h1>
+    <p>
+        In developing this software, my focus was on incorporating key features essential for a sophisticated spying tool.
+        Primarily, I implemented a keylogging mechanism that captures and logs keystrokes along with their associated names.
+        Drawing inspiration from real-world malware, I integrated a foreground window tracking mechanism and a system clipboard data recording feature.
+        <br><br>
+        Now, let's delve into the details of the presented functionalities.
+    </p>
+
+    <h2><strong>Config</strong></h2>
+    <p>
+        First let's start with a bit of context. I opted to implement three distinct threads through Win32 API <a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createthread" target="_blank">CreateThread</a> each operating
+        independently to manage one of the three designated functionalities.
+        This approach not only allowed for parallel processing but also provided the flexibility to terminate a thread after a specified duration, subsequently closing the entire application.
+        It's worth noting that in this simplified scenario, I chose to shut down all operations after a certain time interval.
+        However, during the development phase, I contemplated incorporating additional actions after a designated period, such as sending accumulated data to the remote Command and Control (C2) server.
+        <br><br>
+        To introduce a delay, I utilized <a href="https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitformultipleobjects" target="_blank">WaitForMultipleObjects</a>.
+        Following this delay, the application closes the relevant handles and writes the collected data in a formatted manner to the output file. 
+    </p>
+
+    <h2><strong>Keylogging</strong></h2>
+    <p>
+        To capture all pressed keys, I utilized the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexw" target="_blank">SetWindowsHookEx</a> API, which registers an application-defined hook procedure within a hook chain.
+        Specifically, I employed the <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/about-hooks#wh_keyboard_ll" target="_blank">WH_KEYBOARD_LL</a> hook procedure, which installs a hook to monitor low-level keyboard input events.
+        Whenever a key is pressed, the system triggers a procedure named <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/lowlevelkeyboardproc" target="_blank">LowLevelKeyboardProc</a>, acting as a placeholder for the function defined during the SetWindowsHookEx call.
+        <br><br>
+        The magic unfolds within the KeyboardHook callback, taking <i>nCode</i>, <i>wParam</i>, and <i>lParam</i> as its arguments.
+        The latter two arguments are pivotal for our task; <i>wParam</i> holds the identifier of the keyboard message, indicating the keyboard event that triggered the procedure.
+        In this context, we are interested in wParam having a value equal to <strong>WM_KEYDOWN</strong>, signifying the event of pressing a key on the keyboard.
+        <br><br>
+        Meanwhile, <i>lParam</i> serves as a pointer to a structure named <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-kbdllhookstruct" target="_blank">KBDLLHOOKSTRUCT</a>, furnishing information about a low-level keyboard input event.
+        This structure allows access to various details about the event, including the name of the pressed key.
+        To extract the name, I leveraged the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeynametextw" target="_blank">GetKeyNameText</a> API, requiring a 32-bit (LONG) value as its initial argument, encompassing the scan code (field <strong>scanCode</strong>) and the extended-key flag (field <strong>flags</strong>).
+        In the MSDN page for GetKeyNameText documentation we can see how the function interprets bits in the lParam:
+        <br><br>
+        <figure>
+            <img src="../../assets/img/P1-keylogger/keystroke_message_flags.png" alt="lParam bits" class="post-img">
+            <figcaption class="img-caption">
+                <strong>Figure 1:</strong>  Keystroke Message Flags
+            </figcaption>
+        </figure>
+        To prepare the correct LONG value that need to be passed to GetKeyNameText API I used the Following expression:
+        <code>
+            LONG msg = 1 + (kInfo->scanCode << 16) + (kInfo->flags << 24);
+        </code>
+        Breaking down each element:
+        <ul>
+            <li><strong>kInfo->scanCode:</strong> Represents the scan code of the pressed or released key, a hardware-specific code uniquely identifying a key irrespective of the active keyboard layout.</li>
+            <li><strong>kInfo->flags:</strong> Signifies the extended-key flag, indicating whether the key is an extended key (e.g., right-hand ALT or CTRL keys).</li>
+            <li><strong><<:</strong> The bitwise operator used to position the bits of the two struct's elements as required by GetKeyNameText.</li>
+        </ul>
+        In this way I wanted to combine the values in order to format the bits as described in <strong>Figure 1</strong>, so having:
+        <ul>
+            <li>From bit 16 to 23 the value of <i>kInfo->flags</i></li>
+            <li>At bit 24 the value of <i>kInfo->flags</i></li>
+        </ul>
+        At this point it is possible to retrieve the name of the pressed key in a human-readable form just calling GetKeyNameTextW.
+    </p>
+
+    <h2><strong>Foreground Window</strong></h2>
+    <p>
+        In this context, I aimed to capture the name of the window currently active in use by the user. To achieve this, I utilized <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getforegroundwindow" target="_blank">GetForegroundWindow</a> API to obtain a handle
+        for the foregorund window. A change in the handle implies a shift in the user's focus to a different window. In such cases, I then used the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getwindowtextw" target="_blank">GetWindowText</a> API
+        to retrieve the name of the new window. The code implementation for this functionality is straightforward and easy to comprehend.
+    </p>
+
+    <h2><strong>Clipboard Data</strong></h2>
+    <p>
+        The clipboard serves as a temporary storage buffer facilitating the transfer of data within and between applications. Simply put, when a user executes a copy action (e.g. CTRL+C or right-click and Copy), the copied data resides in the clipboard.
+        My goal was to log this type of data and collect it since it may contain some sensitive information (from the POV of a real-world malware).
+        Accordiong to <a href="https://learn.microsoft.com/en-us/windows/win32/dataxchg/using-the-clipboard#monitoring-clipboard-contents" target="_blank">MSDN</a>, there are primarly three methods for monitoring clipboard changes, with the recommended one being the creation of a clipboard format listener - a window registered to receive notifications
+        when the clipboard contents change. To establish a window as a clipboard format listener, the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-addclipboardformatlistener" target="_blank">AddClipboardFormatListener</a> API is called.
+        Consequently, I created a dedicated window for this purpose. Upon a change in the clipboard content, the window receives a <strong>WM_CLIPBOARDUPDATE</strong> message. At this point, I retrieve the clipboard data by simply invoking the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getclipboarddata" target="_blank">GetClipboardData</a> API. 
+    </p>
+
+    <h2><strong>Output and Demo</strong></h2>
+    <p>
+        Here, I have presented a sample output from the keylogger (just a snippet for simplicity). The output is organized into sections corresponding to different windows.
+        For each window, it displays the keys that were pressed while active, along with any recorded clipboard data.
+        In a nutshell, I initiated the search by pressing the left Windows button to open the search window and looked for the Google Chrome browser.
+        Following that, I intended to log into Facebook. I utilized the address bar for the search, but since the link was already present after just typing the first two characters, I simply pressed the Enter key upon seeing "facebook.com."
+        I then entered fake username and password credentials, pressed Enter, and copied a quote from the main page. Subsequently, I utilized CTRL+W to close the undesired tab, which happened to be the sole tab in the browser.
+        This action led to the closure of the entire browser, and I returned to the PowerShell window.
+        The accompanying GIF demonstrates the sequence of actions undertaken to produce this specific output. I enabled debug prints, allowing you to observe the live execution and gain insight into the ongoing processes.
+        <samp style="white-space: pre-line;">
+            ----------------------------------------------------
+            Current Window = Windows PowerShell
+            Recorded keys = Left Windows
+            ----------------------------------------------------
+            Current Window = Search
+            Recorded keys = G
+            Recorded keys = O
+            Recorded keys = O
+            Recorded keys = G
+            Recorded keys = L
+            Recorded keys = Enter
+            ----------------------------------------------------
+            Current Window = New Tab - Google Chrome
+            Recorded keys = F
+            Recorded keys = A
+            Recorded keys = Enter
+            Recorded keys = T
+            Recorded keys = E
+            Recorded keys = S
+            Recorded keys = T
+            Recorded keys = Tab
+            Recorded keys = T
+            Recorded keys = E
+            Recorded keys = S
+            Recorded keys = T
+            Recorded keys = Enter
+            Recorded keys = Ctrl
+            Recorded keys = C
+            Clipboard context changed. Text = Connect with friends and the world around you on Facebook.
+            Recorded keys = Ctrl
+            Recorded keys = W
+            ----------------------------------------------------
+            Current Window = Windows PowerShell
+            Recorded keys = Ctrl
+            Recorded keys = C
+            ----------------------------------------------------
+        </samp><br>
+        <img src="../../assets/img/P1-keylogger/p1-poc-gif.gif" alt="PoC GIF" class="post-img">
+        <figcaption class="img-caption">
+            <strong>Figure 2:</strong> Demo
+        </figcaption>
+    </p>
+
+    <h1><strong>Conclusion</strong></h1>
+    <p>
+        In this post, we've enjoyed exploring certain functionalities of keyloggers.
+        We've observed how to capture keystrokes, monitor the active window, and retrieve clipboard data, keeping a dynamic record of changes throughout the execution of our PoC application.
+        It's important to note that this demonstration serves purely educational purposes.
+        <br><br>Thank you for taking the time to read this! 👻
+    </p>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        &copy; 2024 Nicola Bottura 👾 | Disclaimer: All posts in this blog are for educational purposes only.
+    </div>
+</footer>
+
+</body>
+</html>
