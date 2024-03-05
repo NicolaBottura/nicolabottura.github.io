@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -5,7 +9,7 @@ body {
     background-color: #f8f9fa; /* Light Grayish Blue */
     color: #333;
     overflow-x: hidden;
-    background: url('/assets/img/covers/background.jpg') center fixed;
+    background: url('/assets/img/covers/background.jpg') no-repeat center center fixed;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -37,42 +41,6 @@ body {
 
 .nav a:hover {
     background-color: #6c757d; /* Darker Gray on Hover */
-}
-
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-
-.dropbtn {
-    padding: 1em;
-    color: white;
-    cursor: pointer;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    margin-top: 10px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
 }
 
 #profile {
@@ -161,8 +129,8 @@ footer {
     display: flex;
     align-items: center;
     margin-top: -30px;
-    margin-left: 40px; /* Adjust the margin for space on the left */
-    margin-right: 40px; /* Adjust the margin for space on the right */
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 .blog-post img {
@@ -170,6 +138,7 @@ footer {
     height: 120px;
     object-fit: cover;
     border-radius: 5%;
+    box-shadow: 0 0 5px black;
 }
 
 .post-details h4 {
@@ -238,25 +207,32 @@ code {
 
 /* Add a media query for responsiveness */
 @media (max-width: 768px) {
+    #profile {
+        padding-top: 70px;
+    }
+
+    #malware-dev h2 {
+        margin-top: 20px; /* Add margin to the top of h2 to prevent overlap */
+    }
+
     .blog-post {
         flex-direction: column;
-        align-items: flex-start;
-        margin-left: 10px; /* Adjust the margin for space on the left on smaller screens */
-        margin-right: 10px; /* Adjust the margin for space on the right on smaller screens */
+        align-items: center;
     }
 
     .blog-post img {
         width: 100%;
+        height: auto;
+        
+    }
+
+    .post-details {
+        margin-top: 20px;
+        margin-left: 0;
         margin-right: 0;
-        margin-bottom: 10px;
-        object-position: center -80px;
+    }
+
+    .banner-image-wrapper {
+        margin-top: 40px;
     }
 }
-
-pre {
-    background-color: #f4f4f4;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: monospace;
-    white-space: pre;
-  }
