@@ -145,6 +145,7 @@ body {
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center 25%;
     display: block;
     margin: 0 auto 1rem auto;
     border: 3px solid #ccc;
