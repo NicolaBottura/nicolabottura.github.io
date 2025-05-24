@@ -1,0 +1,500 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+    --nav-bg: rgba(255,255,255,0.9);
+    --nav-text: #222;
+    --accent: #1abc9c;
+}
+:root.dark {
+    --bg-color: #111;
+    --text-color: #eee;
+    --nav-bg: rgba(20,20,20,0.9);
+    --nav-text: #ddd;
+    --accent: #16a085;
+}
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+body {
+    line-height: 1.6;
+    background-image: url('/assets/img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: var(--bg-color);
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--accent);
+    z-index: 1000;
+}
+.navbar .container {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+}
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--nav-text);
+    text-decoration: none;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-links li a {
+    font-weight: 600;
+    color: var(--nav-text);
+    text-decoration: none;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+.nav-links li a:hover,
+.nav-links li a:focus {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+/* Theme & Mobile Toggles */
+.theme-toggle,
+.nav-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--nav-text);
+    font-size: 1.25rem;
+    margin-left: 1rem;
+}
+.nav-toggle { display: none; }
+.nav-toggle .hamburger,
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+    width: 24px;
+    height: 2px;
+    background-color: var(--nav-text);
+    display: block;
+    position: relative;
+    border-radius: 2px;
+    transition: transform 0.3s;
+}
+.nav-toggle .hamburger::before { content: ''; position: absolute; top: -8px; }
+.nav-toggle .hamburger::after { content: ''; position: absolute; top: 8px; }
+
+/* Socials */
+.site-footer { padding: 2rem 1rem; text-align: center; }
+.social-container { display: flex; justify-content: center; gap: 1.5rem; }
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent);
+  background: rgba( var(--text-color), 0.1 );
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+.social-icon:hover,
+.social-icon:focus {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Hero */
+#hero {
+  min-height: 100vh;
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+}
+.hero-overlay {
+    background-color: rgba(0,0,0,0.5);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+}
+.hero-overlay h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+.hero-overlay p { font-size: 1.25rem; margin-bottom: 2rem; }
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1rem auto;
+    border: 3px solid #ccc;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: 2px solid var(--accent);
+    background-color: var(--accent); /* solid accent by default */
+    color: #fff;                      /* white text */
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: rgba(26, 188, 156, 0.3);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Base style for all main sections (except hero) */
+.section-default {
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Optional shared overlay container */
+.section-default .overlay {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.5);
+  padding: 3rem;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* If you want headings and paragraphs inside overlays to be consistent */
+.section-default .overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.section-default .overlay p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+/* Publications */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 2000px;    /* ↑ increased from 800px */
+  width: 90%;           /* ensures it scales down on small screens */
+  margin: 0 auto;       /* centers the whole list */
+}
+
+/* 2. Make each card fill most of that width */
+.pub-card {
+  background-color: rgba(255,255,255,0.1);
+  padding: 2rem;        /* ↑ a bit more padding for a roomier feel */
+  border-radius: 6px;
+  text-align: left;
+  width: 100%;          /* fill the parent (.pub-list)’s width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.pub-title {
+  font-size: 1.75rem;           /* keep that punchy headline */
+  margin-bottom: 0.5rem;        /* tighten gap to authors */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.2;             /* a bit tighter for drama */
+  font-weight: 700;             /* bolder for emphasis */
+}
+
+.pub-authors {
+  font-size: 1rem;
+  font-style: italic;           /* authors in graceful italics */
+  margin-bottom: 0.25rem;       /* snug up to the venue */
+  color: rgba(255,255,255,0.85);/* slightly muted white */
+}
+
+.pub-venue {
+  font-size: 1.05rem;           /* just a touch smaller than title */
+  font-weight: 600;             /* semi‑bold to stand out */
+  margin-bottom: 1rem;          /* more breathing room below */
+  letter-spacing: 0.5px;        /* subtle tracking for readability */
+}
+
+.pub-buttons .btn {
+  padding: 0.65rem 1.2rem;
+  font-size: 1rem;
+}
+
+.external-link {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.external-link:hover,
+.external-link:focus {
+  color: #fff;
+  background-color: var(--accent);
+  border-radius: 4px;
+  padding: 0.10rem;
+}
+
+/* Contact */
+.contact-info {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.contact-info li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ci-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--accent);
+  flex-shrink: 0;
+}
+
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;    /* or nowrap if you prefer guaranteeing one‑line layout */
+  gap: 1rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+}
+
+.contact-left {
+  flex: 1 1 60%;      /* grow/shrink, base 60% width */
+  text-align: left;   /* ensure its contents are left‑aligned */
+}
+
+.contact-right {
+  flex: 0 1 35%;      /* don’t grow, shrink if needed, base 35% width */
+  display: flex;
+  justify-content: flex-end;  /* push icons to the far right */
+  gap: 1rem;
+  flex-wrap: wrap;           /* wrap icons if they overflow */
+}
+
+.social-link {
+  display: inline-flex;          /* icon + text in one flexible box */
+  align-items: center;           /* vertical‑center them */
+  gap: 0.4rem;                   /* small space between icon & label */
+  padding: 0.4rem 0.8rem;        /* optional hit‑area */
+  background: rgba(255,255,255,0.1);
+  border: 2px solid var(--accent);
+  background-color: var(--accent); /* solid accent by default */
+  color: #fff;                      /* white text */
+  border-radius: 0.5rem;
+  white-space: nowrap;           /* prevent breaking inside */
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+}
+
+.social-link svg {
+  flex-shrink: 0;                /* keep icon size fixed */
+}
+
+.social-link span {
+  font-size: 0.9rem;             /* clean, small text */
+}
+
+.social-link:hover,
+.social-link:focus {
+    background-color: rgba(26, 188, 156, 0.3);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer base */
+.site-footer {
+  margin-top: 4rem;                   /* space from Publications above */
+  padding: 3rem 1rem;                 /* generous vertical padding */
+  background-color: var(--nav-bg);    /* matches navbar translucence */
+  color: var(--nav-text);
+  border-top: 2px solid var(--accent);
+}
+
+/* Footer content layout */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  justify-content: space-between;     /* columns spread out */
+}
+
+/* Individual footer column */
+.footer-col {
+  flex: 1 1 200px;                    /* grow/shrink, min width 200px */
+}
+.footer-col h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+/* Links */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+.footer-col a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col a:hover,
+.footer-col a:focus {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    /* no padding when closed */
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .navbar.open .nav-links {
+    /* restore your vertical padding here */
+    padding: 1rem 0;
+    max-height: 300px; /* or whatever you need to fit all the links */
+  }
+
+  .theme-toggle {
+    /* override the global margin-left:1rem; */
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  .pub-title {
+      font-size: 1.25rem;   /* smaller than the normal 1.75rem */
+      line-height: 1.3;     /* tighten up a bit */
+  }
+  .pub-card {
+      padding: 1.5rem;      /* a bit less padding to fit nicely */
+  }
+  .nav-toggle { display: block; }
+  .navbar.open .nav-links { max-height: 300px; }
+
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .footer-col {
+      width: 100%;
+  }
+}
+
+/* Projects */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.project-card:hover {
+  background: var(--accent);
+  transform: translateY(-4px);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.project-thumb {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 1rem;
+  flex: none;
+}
+
+.project-update {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  margin-top: auto;
+}
+

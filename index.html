@@ -1,99 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicola Bottura</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="icon" href="assets/img/favicon.ico">
-</head>
-<body>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
 
-    <nav class="nav">
+    <link rel="icon" href="/assets/img/ghost-icon.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
         <div class="container">
-            <a href="#" onclick="scrollToTop()">Home</a>
-            <a href="#biography">Biography</a>
-            <a href="#education">Education</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+        <!-- Site Title / Logo -->
+        <a href="index.html" class="nav-brand">Home</a>
+        <!-- Desktop Menu -->
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <!--<li><a href="#contact">Contact</a></li>-->
+        </ul>
+        <!-- Dark/Light mode switch button -->
+        <button class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+        <!-- Mobile Toggle Button -->
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span class="hamburger"></span>
+        </button>
         </div>
     </nav>
 
-    <!-- TODO: fix buttons, they send me under the title -->
-    <section id="profile" class="container">
-        <img src="assets/img/propic.jpg" alt="propic" class="profile-picture">
-        <h1 style="margin-top: 5px;">Nicola Bottura</h1>
-        <p style="font-size: smaller; color: #d0d0d0; margin-top: -0.10em;">Ph.D. Student in Engineering in Computer Science</p>
-        <p style="font-size: smaller; color: #d0d0d0; margin-top: -0.10em;">Sapienza, University of Rome</p>
-        <div class="social-icons">
-            <a href="https://twitter.com/HoIIovv" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/NicolaBottura" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/nicola-bottura/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </section>
+  <!-- Main Content -->
+    <main>
+    <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-overlay">
+                <img src="/assets/img/propic.jpg" alt="Nicola Bottura" class="profile-pic">
 
-    <section id="biography" class="container">
-        <h2>Biography</h2>
-        <p>
-            I'm a Ph.D. student in Engineering in Computer Science at Sapienza University of Rome, <a href="https://www.diag.uniroma1.it/#" target="_blank" style="color: #007bff;">DIAG</a>.<br>
-            I am presently collaborating with the research group led by my two advisors, Professor <a href="https://sites.google.com/diag.uniroma1.it/querzoni/home-page?authuser=1" target="_blank" style="color: #007bff">Leonardo Querzoni</a> and Professor <a href="https://www.diag.uniroma1.it//~delia/" target="_blank" style="color: #007bff;">Daniele Cono D'Elia</a>.<br>
-            My research area is Program Analysis techniques applied to Environment-Sensitive malware. I am passionate about malware design, reverse engineering and micro-architectural attacks.<br>
-            This website serves a dual purpose as my personal portfolio and a blog space where I share insights about my personal projects by publishing some posts.<br>
-    </p>
-    </section>
+                <div class="container social-container">
+                    <a href="https://github.com/NicolaBottura" target="_blank" class="social-icon" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    <a href="https://twitter.com/HoIIovv" target="_blank" class="social-icon" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.203-4.92 4.917 0 .385.045.76.127 1.122C7.691 8.87 4.066 6.897 1.64 3.916a4.822 4.822 0 0 0-.666 2.473c0 1.705.869 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.062c0 2.385 1.697 4.374 3.946 4.827a4.935 4.935 0 0 1-2.224.084 4.923 4.923 0 0 0 4.6 3.417A9.867 9.867 0 0 1 0 19.54a13.946 13.946 0 0 0 7.548 2.212c9.055 0 14.004-7.496 14.004-13.986 0-.21 0-.423-.015-.637A9.935 9.935 0 0 0 24 4.557z"/></svg>
+                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" target="_blank" class="social-icon" aria-label="Google Scholar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="currentColor"> <path d="M320 32L0 160l320 128 186.5-74.6V384h64V213.4L640 160 320 32zm128 352c0 35.3-28.7 64-64 64h-32v-96h32c35.3 0 64 28.7 64 64zm-128 64h-96v-96h96v96zm-128 0h-32c-35.3 0-64-28.7-64-64s28.7-64 64-64h32v96z"/></svg>
+                    </a>
+                </div>
 
-    <section id="education" class="container">
-        <h2>Education</h2>
-        <p>
-            <i class="fa fa-graduation-cap"></i>
-            <strong style="font-size: larger;">PhD in Engineering in Computer Science</strong><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| Sapienza University of Rome</span><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| Expected completion: Mid-2025</span><br><br>
+                <h1>Nicola Bottura</h1>
+                <p>Ph.D. student in Engineering in Computer Science from Italy</p>
+                <a class="btn" href="#about">View Biography 👻</a>
+            </div>
+        </section>
+        <!-- About section -->
+        <section id="about" class="section-default">
+            <div class="overlay">
+                <h1>About</h1>
+                <p>
+                    I'm a Ph.D student in Engineering in Computer Science at Sapienza University of Rome, at the department of Computer, Control and Management Engineering, <a href="https://www.diag.uniroma1.it/en" target="_blank" class="external-link">DIAG</a>.
+                    I am currently working in the research group led by my two advisors, Professor <a href="https://sites.google.com/diag.uniroma1.it/querzoni/home-page?authuser=1" target="_blank" class="external-link">Leonardo Querzoni</a> and Professor <a href="https://www.diag.uniroma1.it//~delia/" target="_blank" class="external-link">Daniele Cono D'Elia</a>.
+                    Currently I am doing my visiting abroad period at the <a href="https://www.utwente.nl/en/" target="_blank" class="external-link">University of Twente</a> under the supervision of Professor <a href="https://conand.me/" target="_blank" class="external-link">Andrea Continella</a> working on software testing.
+                    My research focuses on software and system security, in particular, program analysis, reverse engineering, malware analysis and software testing.
+                    <br><br>
+                    I'm one of the two inventors for the patent "Methods and systems for analyzing environment-sensitive malware via coverage-guided fuzzing" <a href="https://patents.google.com/patent/IT202200015966A1/it" target="_blank" class="external-link">IT202200015966A1</a> and <a href="https://patents.google.com/patent/EP4312401B1/en" target="_blank" class="external-link">EP4312401B1</a> and currently under revision for the US.
+                    <br><br>
+                    More details can be found in my <a href="/assets/pdf/NicolaBotturaCV.pdf" target="_blank" class="external-link">CV</a>.
+                </p>
+            </div>
+        </section>
+        <!-- Publications section -->
+        <section id="publications" class="section-default">
+            <div class="overlay">
+                <h1>Publications</h1>
+                <div class="pub-list">
+                <!-- PF Card -->
+                <div class="pub-card">
+                    <h3 class="pub-title">
+                    Methods and Systems for Analyzing Environment‑Sensitive Malware  
+                    with Coverage‑Guided Fuzzing
+                    </h3>
+                    <p class="pub-authors">
+                    Nicola Bottura, Daniele Cono D’Elia, Leonardo Querzoni
+                    </p>
+                    <p class="pub-venue">
+                    10th IEEE European Symposium on Security and Privacy (Euro S&amp;P 2025)
+                    </p>
+                    <div class="pub-buttons">
+                    <a href="/assets/pdf/Bottura_2025_MalwareFuzzing.pdf" target="_blank" class="btn btn-outline">
+                        📄 View PDF
+                    </a>
+                    <a href="https://doi.org/10.1109/EuroSP.2025.xxxx" target="_blank" class="btn btn-outline">
+                        🔗 DOI
+                    </a>
+                    <a href="/assets/citations/Bottura2025.bib" target="_blank" download class="btn btn-outline">
+                        📥 Citation
+                    </a>
+                    </div>
+                </div>
+                <!-- API-Hashing Card -->
+                <div class="pub-card">
+                    <h3 class="pub-title">
+                    Poster: All Right Then, (Don't) Keep Your Secrets: Exposing API Hashing in Malware
+                    </h3>
+                    <p class="pub-authors">
+                    Nicola Bottura, Giorgia Di Pietro, Yuya Yamada, Daniele Cono D'Elia, Leonardo Querzoni
+                    </p>
+                    <p class="pub-venue">
+                    22nd Conference on Detection of Intrusions and Malware & Vulnerability Assessment (DIMVA '25)                    
+                    </p>
+                    <div class="pub-buttons">
+                    <a href="/assets/pdf/Bottura_2025_MalwareFuzzing.pdf" target="_blank" class="btn btn-outline">
+                        📄 View PDF
+                    </a>
+                    <a href="https://doi.org/10.1109/EuroSP.2025.xxxx" target="_blank" class="btn btn-outline">
+                        🔗 DOI
+                    </a>
+                    <a href="/assets/citations/Bottura2025.bib" target="_blank" download class="btn btn-outline">
+                        📥 Citation
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Prejects section -->
+        <section id="projects" class="section-default">
+            <div class="overlay">
+                <h1>Projects</h1>
+                <p>List of projects I developed.</p>
 
-            <i class="fa fa-graduation-cap"></i>
-            <strong style="font-size: larger;">MSc in Cybersecurity, 2021</strong><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| Sapienza University of Rome</span><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| Thesis title: Revisiting API Interposition Techniques</span><br><br>
+                <div class="project-grid">
 
-            <i class="fa fa-graduation-cap"></i>
-            <strong style="font-size: larger;">BSc in Computer Science, 2019</strong><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| University of Modena and Reggio Emilia, UNIMORE</span><br>
-            <span style="font-size: smaller;">&emsp;&emsp;| Thesis title: Bounded Latency on scheduler BFQ</span><br><br>
-        </p>
-        
-    </section>
+                <a href="/projects/mal-dev/HDDInfoEvasion.html" target="_blank" class="project-card">
+                    <img src="/assets/img/cover-p1.jpg" alt="HDD Info Evasion cover" class="project-thumb">
+                    <div class="project-info">
+                    <h2 class="project-title">HDD Info Evasive</h2>
+                    <p class="project-description">PoC of an anti-VM technique leveraging HDD info to expose virtualization.</p>
+                    <p class="project-update" style="font-size: 1rem">Latest update: January 29, 2024</p>
+                    </div>
+                </a>
 
-    <section id="blog" class="container">
-        <h2>Blog-section</h2>
+                <a href="/projects/mal-dev/keylogger.html" target="_blank" class="project-card">
+                    <img src="/assets/img/cover-p2.jpg" alt="Keylogger cover" class="project-thumb">
+                    <div class="project-info">
+                    <h2 class="project-title">Unveiling Keylogger Functionalities</h2>
+                    <p class="project-description">Win32 API-based keylogger that logs keystrokes, foreground window, and clipboard.</p>
+                    <p class="project-update" style="font-size: 1rem">Latest update: February 17, 2024</p>
+                    </div>
+                </a>
 
-        <!-- add a banner with a clickable image related to malware dev -->
-        <i class="fa fa-user-secret"></i>
-        <strong style="font-size: larger;"><a href="posts/posts-list.html" target="_blank" style="text-decoration: none; color:inherit">&nbsp;Malware-Dev</a></strong><br>
-        <span style="font-size: smaller;">&emsp;&emsp;| List of projects and applications to explore various malware techniques</span><br>
-    </section>
-        
-    <section id="contact" class="container">
-        <h2>Contact</h2>
-        <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;bottura [at] diag [dot] uniroma1 [dot] it</p>
-        <p><i class="fa fa-globe"></i>&nbsp;&nbsp;Department of Computer, Control, and Management Engineering<br>
-        &emsp;&nbsp;&nbsp;| Room B112<br>
-        &emsp;&nbsp;&nbsp;| Via Ariosto 25<br>
-        &emsp;&nbsp;&nbsp;| 00185 Rome, Italy<br></p>
+                </div>
+            </div>
+        </section>
+        <!-- Contact section -->
+        <!--
+        <section id="contact" class="section-default">
+            <div class="overlay">
+                <h1>Contact</h1>
+                <div class="contact-row">
+                <div class="contact-left">
+                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M2 4h20v16H2V4zm2 2v2l8 5 8-5V6H4zm16 12V10l-8 5-8-5v8h16z"/>
+                    </svg>
+                    <span>bottura [at] diag [dot] uniroma1 [dot] it</span>
+                    <br>
+                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 22V2h18v20H3zm2-2h14V4H5v16zM7 6h2v2H7V6zm0 4h2v2H7v-2zm0 4h2v2H7v-2zM11 6h6v2h-6V6zm0 4h6v2h-6v-2zm0 4h6v2h-6v-2z"/>
+                    </svg>
+                    <span>Dept. of Computer, Control, &amp; Management Eng., Room B112</span>
+                    <br>
+                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5 14.5 7.6 14.5 9 13.4 11.5 12 11.5z"/>
+                    </svg>
+                    <span>Via Ariosto 25, 00185 Rome, Italy</span>
+                    <br>
+                </div>
+                <div class="contact-right">
+                    <a href="https://github.com/NicolaBottura" class="social-link" aria-label="GitHub" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        <span>@NicolaBottura</span>
+                    </a>
+                    <a href="https://twitter.com/HoIIovv" class="social-link" aria-label="Twitter" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.203-4.92 4.917 0 .385.045.76.127 1.122C7.691 8.87 4.066 6.897 1.64 3.916a4.822 4.822 0 0 0-.666 2.473c0 1.705.869 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.062c0 2.385 1.697 4.374 3.946 4.827a4.935 4.935 0 0 1-2.224.084 4.923 4.923 0 0 0 4.6 3.417A9.867 9.867 0 0 1 0 19.54a13.946 13.946 0 0 0 7.548 2.212c9.055 0 14.004-7.496 14.004-13.986 0-.21 0-.423-.015-.637A9.935 9.935 0 0 0 24 4.557z"/></svg>
+                        <span>@HoIIovv</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" class="social-link" aria-label="Google Scholar" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="currentColor"> <path d="M320 32L0 160l320 128 186.5-74.6V384h64V213.4L640 160 320 32zm128 352c0 35.3-28.7 64-64 64h-32v-96h32c35.3 0 64 28.7 64 64zm-128 64h-96v-96h96v96zm-128 0h-32c-35.3 0-64-28.7-64-64s28.7-64 64-64h32v96z"/></svg>
+                        <span>Scholar</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        -->
+    </main>
+  
+    <!-- Link to JavaScript file -->
+    <script src="js/scripts.js"></script>
 
-        <li class="fab fa-twitter">
-            <a href="https://twitter.com/HoIIovv" style="color: #007bff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">@HoIIovv</a>
-        </li>
-        <li class="fab fa-github">
-            <a href="https://github.com/NicolaBottura" style="color: #007bff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">@NicolaBottura</a>
-        </li>
-    </section>
 
-    <footer class="footer">
-        <div class="container">
-            &copy; 2024 Nicola Bottura 👾
-        </div>
-    </footer>
-
+    <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://github.com/NicolaBottura" target="_blank">GitHub</a></li>
+          <li><a href="https://twitter.com/HoIIovv" target="_blank">Twitter</a></li>
+          <li><a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" target="_blank">Google Scholar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:bottura@diag.uniroma1.it">bottura@diag.uniroma1.it</a></p>
+        <p>© 2025 Nicola Bottura</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
