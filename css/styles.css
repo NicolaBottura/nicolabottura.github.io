@@ -392,8 +392,13 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
   body {
-    background-size: 100% auto; 
-    background-position: center top;
+    background-attachment: scroll;
+    background-position: center;
+    background-size: cover; 
+  }
+
+  html {
+    font-size: 14px;
   }
 
   .nav-links {
