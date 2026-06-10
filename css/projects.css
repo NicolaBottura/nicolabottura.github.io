@@ -1,0 +1,298 @@
+/* ============================================================
+   PROJECT PAGE — project.css
+   Extends style.css for individual project writeup pages
+   ============================================================ */
+
+/* ── Back link bar ── */
+.proj-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 3rem;
+  transition: color .2s var(--ease);
+  text-decoration: none;
+}
+
+.proj-page__back:hover { color: var(--accent) }
+
+.proj-page__back::before {
+  content: '←';
+  font-size: .9rem;
+}
+
+/* ── Page header ── */
+.proj-page__header {
+  margin-bottom: 3.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.proj-page__kicker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.proj-page__type {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.proj-page__date {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--text-3);
+  letter-spacing: .08em;
+}
+
+.proj-page__title {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.1;
+  color: var(--text-1);
+  margin-bottom: 1.25rem;
+}
+
+.proj-page__subtitle {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 580px;
+  margin-bottom: 1.5rem;
+}
+
+.proj-page__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+
+/* ── Two-column layout: content + sidebar ── */
+.proj-page__body {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── Article content (markdown-like prose) ── */
+.proj-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.proj-page__content h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--text-1);
+  margin-top: .5rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.proj-page__content p {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--text-2);
+  line-height: 2;
+}
+
+.proj-page__content a {
+  color: var(--green);
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+
+.proj-page__content a:hover {
+  color: var(--text-1);
+  text-decoration: underline;
+}
+
+.proj-page__content strong {
+  color: var(--text-1);
+  font-weight: 700;
+}
+
+.proj-page__content em {
+  color: var(--text-1);
+  font-style: italic;
+}
+
+/* Code blocks */
+.proj-page__content pre {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  color: var(--text-2);
+  line-height: 1.8;
+}
+
+.proj-page__content code {
+  font-family: var(--font-mono);
+  font-size: .8em;
+  color: var(--accent);
+  background: rgba(127, 119, 221, .08);
+  padding: .1em .35em;
+}
+
+.proj-page__content pre code {
+  background: none;
+  color: var(--text-2);
+  padding: 0;
+  font-size: 1em;
+}
+
+/* Blockquote / callout */
+.proj-page__content blockquote {
+  border-left: 2px solid var(--accent-dim);
+  padding: .75rem 1.25rem;
+  background: var(--bg-1);
+  font-style: italic;
+  color: var(--text-2);
+}
+
+/* Images in content */
+.proj-page__content img {
+  width: 100%;
+  border: 1px solid var(--border);
+  display: block;
+}
+
+.proj-page__content figure {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.proj-page__content figcaption {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--text-3);
+  letter-spacing: .06em;
+  text-align: center;
+}
+
+/* ── Sidebar ── */
+.proj-page__sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.proj-page__sidebar-block {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+}
+
+.proj-page__sidebar-label {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: .75rem;
+}
+
+.proj-page__sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.proj-page__sidebar-links a {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--accent);
+  transition: color .2s;
+  text-underline-offset: 3px;
+}
+
+.proj-page__sidebar-links a:hover {
+  color: var(--text-1);
+  text-decoration: underline;
+}
+
+.proj-page__sidebar-row {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  margin-bottom: .65rem;
+}
+
+.proj-page__sidebar-row:last-child { margin-bottom: 0 }
+
+.proj-page__sidebar-key {
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.proj-page__sidebar-val {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--text-1);
+}
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  .proj-page__body {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .proj-page__sidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+/* Restore list styles inside article content */
+.proj-page__content ul,
+.proj-page__content ol {
+  list-style: revert;
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.proj-page__content li {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--text-2);
+  line-height: 1.8;
+}
+
+/* Terminal / sample output block */
+.proj-page__content .output-block {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  color: var(--green);
+  line-height: 1.8;
+  white-space: pre;
+}

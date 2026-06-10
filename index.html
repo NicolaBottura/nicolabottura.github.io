@@ -1,229 +1,359 @@
+<!-- =============================
+    NICOLA BOTTURA - Personal Site
+    index.html
+============================== -->
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicola Bottura</title>
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" href="css/styles.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Nicola Bottura, Ph.D. - Windows internals security researcher.">
+        <title>Nicola Bottura, Ph.D.</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/ghost.css"
+        
+        <link rel="icon" href="images/ghost-icon.png">
+    </head>
 
-    <link rel="icon" href="/assets/img/ghost-icon.png">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav id="navbar" class="navbar">
-        <div class="container">
-        <!-- Site Title / Logo -->
-        <a href="index.html" class="nav-brand">Home</a>
-        <!-- Desktop Menu -->
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <!--<li><a href="#contact">Contact</a></li>-->
-        </ul>
-        <!-- Dark/Light mode switch button -->
-        <button class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
-        <!-- Mobile Toggle Button -->
-        <button class="nav-toggle" aria-label="Toggle menu">
-            <span class="hamburger"></span>
-        </button>
+    <!-- =====
+        NAVBAR
+    ====== -->
+    <nav class="nav" id="nav">
+        <div class="container nav__inner">
+            <a href="#" class="nav__logo">
+                nb<span>.</span>research
+            </a>
+        
+            <ul class="nav__links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="assets/pdf/NicolaBotturaCV.pdf"
+                    class="btb-cv"
+                    target="_blank"
+                    rel="noopener">CV ↓</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-  <!-- Main Content -->
-    <main>
-    <!-- Hero Section -->
-        <section id="hero">
-            <div class="hero-overlay">
-                <img src="/assets/img/propic.jpg" alt="Nicola Bottura" class="profile-pic">
+    <!-- ===
+        HERO
+    ==== -->
+    <section class="hero" id="home">
+        <div class="hero__inner">
 
-                <div class="container social-container">
-                    <a href="https://github.com/NicolaBottura" target="_blank" class="social-icon" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                    <a href="https://twitter.com/HoIIovv" target="_blank" class="social-icon" aria-label="Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.203-4.92 4.917 0 .385.045.76.127 1.122C7.691 8.87 4.066 6.897 1.64 3.916a4.822 4.822 0 0 0-.666 2.473c0 1.705.869 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.062c0 2.385 1.697 4.374 3.946 4.827a4.935 4.935 0 0 1-2.224.084 4.923 4.923 0 0 0 4.6 3.417A9.867 9.867 0 0 1 0 19.54a13.946 13.946 0 0 0 7.548 2.212c9.055 0 14.004-7.496 14.004-13.986 0-.21 0-.423-.015-.637A9.935 9.935 0 0 0 24 4.557z"/></svg>
-                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" target="_blank" class="social-icon" aria-label="Google Scholar">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="currentColor"> <path d="M320 32L0 160l320 128 186.5-74.6V384h64V213.4L640 160 320 32zm128 352c0 35.3-28.7 64-64 64h-32v-96h32c35.3 0 64 28.7 64 64zm-128 64h-96v-96h96v96zm-128 0h-32c-35.3 0-64-28.7-64-64s28.7-64 64-64h32v96z"/></svg>
-                    </a>
-                </div>
+            <!-- Text -->
+             <div class="hero__text">
+                <p class="hero__kicker">Ph.D. · Security Researcher</p>
 
-                <h1>Nicola Bottura</h1>
-                <p>Ph.D. student in Engineering in Computer Science from Italy</p>
-                <a class="btn" href="#about">View Biography 👻</a>
-            </div>
-        </section>
-        <!-- About section -->
-        <section id="about" class="section-default">
-            <div class="overlay">
-                <h1>About</h1>
-                <p>
-                    I'm a Ph.D. student in Engineering in Computer Science at Sapienza University of Rome, in the department of Computer, Control and Management Engineering, <a href="https://www.diag.uniroma1.it/en" target="_blank" class="external-link">DIAG</a>.
-                    I work in the research group led by my advisors, Professor <a href="https://sites.google.com/diag.uniroma1.it/querzoni/home-page?authuser=1" target="_blank" class="external-link">Leonardo Querzoni</a> and Professor <a href="https://www.diag.uniroma1.it//~delia/" target="_blank" class="external-link">Daniele Cono D'Elia</a>.
-                    I am currently on a visiting research period at the <a href="https://www.utwente.nl/en/" target="_blank" class="external-link">University of Twente</a> under the supervision of Professor <a href="https://conand.me/" target="_blank" class="external-link">Andrea Continella</a> working on software testing.
-                    My research interests lie in software and system security, in particular program analysis, reverse engineering, malware analysis and software testing.
-                    <br><br>
-                    I'm one of the two inventors of the patent "Methods and systems for analyzing environment-sensitive malware via coverage-guided fuzzing" <a href="https://patents.google.com/patent/IT202200015966A1/it" target="_blank" class="external-link">IT202200015966A1</a> and <a href="https://patents.google.com/patent/EP4312401B1/en" target="_blank" class="external-link">EP4312401B1</a>, which is currently under revision for the U.S. patent office.
-                    <br><br>
-                    More details can be found in my <a href="/assets/pdf/NicolaBotturaCV.pdf" target="_blank" class="external-link">CV</a>.
+                <h1 class="hero__name">
+                    Nicola<br>
+                    <em>Bottura</em>
+                </h1>
+
+                <p class="hero__tagline">
+                    R&D and scientific researcher passionate about Windows Internal
+                    security, reverse engineering and malware analysis. 
                 </p>
+
+                <div class="hero__links">
+                    <a href="#about" class="primary">Biography 👻</a>
+                    <a href="https://github.com/NicolaBottura" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" target="_blank" rel="noopener">Scholar</a>
+                    <a href="https://twitter.com/HoIIovv" target="_blank" rel="noopener">Twitter</a>
+                </div>
             </div>
-        </section>
-        <!-- Publications section -->
-        <section id="publications" class="section-default">
-            <div class="overlay">
-                <h1>Publications</h1>
-                <div class="pub-list">
-                <!-- PF Card -->
-                <div class="pub-card">
-                    <h3 class="pub-title">
-                    PFUZZER: Practical, Sound, and Effective Multi-path Analysis of Environment-sensitive Malware with Coverage-guided Fuzzing
-                    </h3>
-                    <p class="pub-authors">
-                    Nicola Bottura, Daniele Cono D’Elia, Leonardo Querzoni
-                    </p>
-                    <p class="pub-venue">
-                    10th IEEE European Symposium on Security and Privacy (Euro S&amp;P 2025)
-                    </p>
-                    <div class="pub-buttons">
-                    <a href="/assets/pdf/eurosp25-pfuzzer.pdf" target="_blank" class="btn btn-outline">
-                        📄 View PDF
-                    </a>
-                    <!--<a href="https://doi.org/10.1109/EuroSP.2025.xxxx" target="_blank" class="btn btn-outline">
-                        🔗 DOI
-                    </a>
-                    <a href="/assets/citations/Bottura2025.bib" target="_blank" download class="btn btn-outline">
-                        📥 Citation
-                    </a>-->
+
+            <!-- Photo -->
+             <div class="hero__photo-wrap">
+                <img
+                    src="images/propic.jpg"
+                    alt="Nicola Bottura"
+                    class="hero__photo"
+                    width="220"
+                    height="220"
+                >
+             </div>
+        </div>
+
+        <!-- Scroll hint -->
+         <div class="hero__scroll" aria-hidden="true">scroll</div>
+    </section>
+
+    <!-- =======
+        SECTIONS
+    ======== -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">About</h2>
+                <span class="section-line"></span>
+            </div>
+        
+            <div class="about__grid">
+                <!-- Left: bio text -->
+                <div class="about__bio">
+                    <p> I'm a security researcher interested in Windows internals, reverse engineering, vulnerability finding, and malware analysis. I earned my Ph.D. in Engineering in Computer Science at Sapienza University of Rome, in the Department of Computer, Control and Management Engineering (<a href="https://www.diag.uniroma1.it/en" target="_blank" rel="noopener">DIAG</a>). I currently work for <a href="https://www.prismacompany.it/" target="_blank" rel="noopener">Prisma s.r.l</a>. as R&D working on a commercial malware analysis platform for analyzing environment-sensitive malware based on our research published in <a href="assets/pdf/papers/eurosp25-pfuzzer.pdf" target="_blank" rel="noopener">this</a> scientific paper. I also do scientific research for the research group led by Prof. <a href="https://sites.google.com/diag.uniroma1.it/querzoni/" target="_blank" rel="noopener">Leonardo Querzoni</a> and Prof. <a href="https://www.diag.uniroma1.it//~delia/" target="_blank" rel="noopener">Daniele Cono D'Elia</a>, Sapienza Software and Systems Security (<a href="https://github.com/Sap4Sec" target="_blank" rel="noopener">Sap4Sec</a>) where I worked with during my Ph.D. program. </p>
+                    <p> My research interests mainly lie in software and system security, in particular Windows internals, reverse engineering, vulnerability finding and malware analysis. </p>
+                    <p> I'm co-inventor of the patent <em>"Methods and systems for analyzing environment-sensitive malware via coverage-guided fuzzing"</em> (<a href="https://patents.google.com/patent/IT202200015966A1/it" target="_blank" rel="noopener">IT202200015966A1</a> and <a href="https://patents.google.com/patent/EP4312401B1/en" target="_blank" rel="noopener">EP4312401B1</a>, soon also US).</p>
+                    <div class="about__tags">
+                        <span class="tag">windows internals</span>
+                        <span class="tag">malware analysis</span>
+                        <span class="tag">program analysis</span>
+                        <span class="tag">fuzzing</span>
+                        <span class="tag">reverse engineering</span>
                     </div>
                 </div>
-                <!-- API-Hashing Card -->
-                <div class="pub-card">
-                    <h3 class="pub-title">
-                    Poster: All Right Then, (Don't) Keep Your Secrets: Exposing API Hashing in Malware
-                    </h3>
-                    <p class="pub-authors">
-                    Nicola Bottura, Giorgia Di Pietro, Yuya Yamada, Daniele Cono D'Elia, Leonardo Querzoni
-                    </p>
-                    <p class="pub-venue">
-                    22nd Conference on Detection of Intrusions and Malware & Vulnerability Assessment (DIMVA '25)                    
-                    </p>
-                    <div class="pub-buttons">
-                    <a href="/assets/pdf/dimva25posters-final10.pdf" target="_blank" class="btn btn-outline">
-                        📄 View PDF
-                    </a>
-                    <!--<a href="https://doi.org/10.1109/EuroSP.2025.xxxx" target="_blank" class="btn btn-outline">
-                        🔗 DOI
-                    </a>
-                    <a href="/assets/citations/Bottura2025.bib" target="_blank" download class="btn btn-outline">
-                        📥 Citation
-                    </a>-->
+
+                <!-- Right: info card -->
+                <aside class="about__card">
+                    <div class="about__card-row">
+                        <span class="about__card-label">Position</span>
+                        <span class="about__card-value">R&D at Prisma s.r.l.</span>
                     </div>
-                </div>
+                    <div class="about__card-row">
+                        <span class="about__card-label">Scientific research</span>
+                        <span class="about__card-value">Sapienza - Rome, Sap4Sec group</span>
+                    </div>
+                    <div class="about__card-divider"></div>
+                        <div class="about__card-row">
+                        <span class="about__card-label">Email</span>
+                        <a href="mailto:bottura@diag.uniroma1.it" class="about__card-value about__card-link"> bottura@ <wbr>diag.uniroma1.it </a>
+                    </div>
+                    <div class="about__card-row">
+                        <span class="about__card-label">GitHub</span>
+                        <a href="https://github.com/NicolaBottura" target="_blank" rel="noopener" class="about__card-value about__card-link"> NicolaBottura </a>
+                    </div>
+                    <div class="about__card-divider"></div>
+                    <a href="assets/pdf/NicolaBotturaCV.pdf" target="_blank" rel="noopener" class="about__cv-btn"> Download CV ↓ </a>
+                </aside>
             </div>
-        </section>
-        <!-- Prejects section -->
-        <section id="projects" class="section-default">
-            <div class="overlay">
-                <h1>Projects</h1>
-                <div class="project-grid">
-                    <a href="/projects/mal-dev/HDDInfoEvasion.html" target="_blank" class="project-card">
-                        <img src="/assets/img/cover-p1.jpg" alt="HDD Info Evasion cover" class="project-thumb">
-                        <div class="project-info">
-                        <h2 class="project-title">HDD Info Evasive</h2>
-                        <p class="project-description">PoC of an anti-VM technique leveraging HDD info to expose virtualization.</p>
-                        <p class="project-update" style="font-size: 1rem">Latest update: January 29, 2024</p>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Publications</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="pub__list">
+ 
+                <!-- Paper 1 -->
+                <article class="pub__item">
+                    <div class="pub__meta">
+                        <span class="pub__type">Conference Paper</span>
+                        <span class="pub__year">2025</span>
+                    </div>
+                    
+                    <div class="pub__body">
+                        <div class="pub__venue">
+                            10th IEEE European Symposium on Security and Privacy
+                            <span class="pub__venue-short">Euro S&amp;P 2025</span>
                         </div>
-                    </a>
-
-                    <a href="/projects/mal-dev/keylogger.html" target="_blank" class="project-card">
-                        <img src="/assets/img/cover-p2.jpg" alt="Keylogger cover" class="project-thumb">
-                        <div class="project-info">
-                        <h2 class="project-title">Unveiling Keylogger Functionalities</h2>
-                        <p class="project-description">Win32 API-based keylogger that logs keystrokes, foreground window, and clipboard.</p>
-                        <p class="project-update" style="font-size: 1rem">Latest update: February 17, 2024</p>
+                        <h3 class="pub__title">
+                            PFUZZER: Practical, Sound, and Effective Multi-path Analysis
+                            of Environment-sensitive Malware with Coverage-guided Fuzzing
+                        </h3>
+                        <p class="pub__authors">
+                            Authors: Nicola Bottura, Daniele Cono D'Elia, Leonardo Querzoni
+                        </p>
+                    
+                        <div class="pub__links">
+                            <a href="assets/pdf/papers/eurosp25-pfuzzer.pdf"
+                            class="pub__link pub__link--primary"
+                                target="_blank" rel="noopener">
+                                ↓ PDF
+                            </a>
+                            <a href="https://patents.google.com/patent/EP4312401B1/en"
+                                class="pub__link"
+                                target="_blank" rel="noopener">
+                                Patent EP4312401B1 ↗
+                            </a>
                         </div>
-                    </a>
+                    </div>
+                </article>
+    
+                <!-- Paper 2 -->
+                <article class="pub__item">
+                    <div class="pub__meta">
+                        <span class="pub__type">Poster</span>
+                        <span class="pub__year">2025</span>
+                    </div>
+                    
+                    <div class="pub__body">
+                        <div class="pub__venue">
+                            22nd Conference on Detection of Intrusions and Malware
+                            &amp; Vulnerability Assessment
+                            <span class="pub__venue-short">DIMVA 2025</span>
+                        </div>
+                        <h3 class="pub__title">
+                            All Right Then, (Don't) Keep Your Secrets:
+                            Exposing API Hashing in Malware
+                        </h3>
+                        <p class="pub__authors">
+                            Authors: Nicola Bottura, Giorgia Di Pietro, Yuya Yamada,
+                            Daniele Cono D'Elia, Leonardo Querzoni
+                        </p>
+                        <div class="pub__links">
+                            <a href="assets/pdf/papers/dimva25posters-final10.pdf"
+                                class="pub__link pub__link--primary"
+                                target="_blank" rel="noopener">
+                                ↓ PDF
+                            </a>
+                        </div>
+                    </div>
+                </article> 
+            </div><!-- /.pub__list -->
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Projects</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="proj__grid">
+                <!-- Project card 1 -->
+                <a href="projects/hdd-info-evasion.html" class="proj__card">
+                    <div class="proj__card-header">
+                        <span class="proj__tag">Malware Dev</span>
+                        <span class="proj__date">Jan 2024</span>
+                    </div>
+                    <h3 class="proj__title">HDD Info Evasion</h3>
+                    <p class="proj__desc">
+                        PoC of an anti-VM technique leveraging HDD information
+                        to expose virtualization and evade dynamic analysis.
+                    </p>
+                    <div class="proj__footer">
+                        <span class="proj__tag-tech">C</span>
+                        <span class="proj__tag-tech">Win32 API</span>
+                        <span class="proj__arrow">→</span>
+                    </div>
+                </a>
+ 
+                <!-- Project card 2 -->
+                <a href="projects/keylogger.html" class="proj__card">
+                    <div class="proj__card-header">
+                        <span class="proj__tag">Malware Dev</span>
+                        <span class="proj__date">Feb 2024</span>
+                    </div>
+                    <h3 class="proj__title">Keylogger Functionalities</h3>
+                    <p class="proj__desc">
+                        Win32 API-based keylogger that logs keystrokes,
+                        foreground window title, and clipboard contents.
+                    </p>
+                    <div class="proj__footer">
+                        <span class="proj__tag-tech">C</span>
+                        <span class="proj__tag-tech">Win32 API</span>
+                        <span class="proj__arrow">→</span>
+                    </div>
+                </a>
+ 
+                <!-- Placeholder card - remove when you add a real project -->
+                <div class="proj__card proj__card--empty">
+                    <div class="proj__card-header">
+                        <span class="proj__tag" style="opacity:.4">Coming soon</span>
+                    </div>
+                    <h3 class="proj__title" style="opacity:.3">New project</h3>
+                    <p class="proj__desc" style="opacity:.25">
+                        More writeups and tools on the way…
+                    </p>
                 </div>
             </div>
-        </section>
-        <!-- Contact section -->
-        <!--
-        <section id="contact" class="section-default">
-            <div class="overlay">
-                <h1>Contact</h1>
-                <div class="contact-row">
-                <div class="contact-left">
-                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M2 4h20v16H2V4zm2 2v2l8 5 8-5V6H4zm16 12V10l-8 5-8-5v8h16z"/>
-                    </svg>
-                    <span>bottura [at] diag [dot] uniroma1 [dot] it</span>
-                    <br>
-                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M3 22V2h18v20H3zm2-2h14V4H5v16zM7 6h2v2H7V6zm0 4h2v2H7v-2zm0 4h2v2H7v-2zM11 6h6v2h-6V6zm0 4h6v2h-6v-2zm0 4h6v2h-6v-2z"/>
-                    </svg>
-                    <span>Dept. of Computer, Control, &amp; Management Eng., Room B112</span>
-                    <br>
-                    <svg class="ci-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5 14.5 7.6 14.5 9 13.4 11.5 12 11.5z"/>
-                    </svg>
-                    <span>Via Ariosto 25, 00185 Rome, Italy</span>
-                    <br>
-                </div>
-                <div class="contact-right">
-                    <a href="https://github.com/NicolaBottura" class="social-link" aria-label="GitHub" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.744.084-.729.084-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.335-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.21.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        <span>@NicolaBottura</span>
-                    </a>
-                    <a href="https://twitter.com/HoIIovv" class="social-link" aria-label="Twitter" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.555-2.005.959-3.127 1.184A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.203-4.92 4.917 0 .385.045.76.127 1.122C7.691 8.87 4.066 6.897 1.64 3.916a4.822 4.822 0 0 0-.666 2.473c0 1.705.869 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.062c0 2.385 1.697 4.374 3.946 4.827a4.935 4.935 0 0 1-2.224.084 4.923 4.923 0 0 0 4.6 3.417A9.867 9.867 0 0 1 0 19.54a13.946 13.946 0 0 0 7.548 2.212c9.055 0 14.004-7.496 14.004-13.986 0-.21 0-.423-.015-.637A9.935 9.935 0 0 0 24 4.557z"/></svg>
-                        <span>@HoIIovv</span>
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" class="social-link" aria-label="Google Scholar" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 512" fill="currentColor"> <path d="M320 32L0 160l320 128 186.5-74.6V384h64V213.4L640 160 320 32zm128 352c0 35.3-28.7 64-64 64h-32v-96h32c35.3 0 64 28.7 64 64zm-128 64h-96v-96h96v96zm-128 0h-32c-35.3 0-64-28.7-64-64s28.7-64 64-64h32v96z"/></svg>
-                        <span>Scholar</span>
-                    </a>
-                </div>
+      </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Contact</h2>
+                <span class="section-line"></span>
             </div>
-        </section>
-        -->
-    </main>
-  
-    <!-- Link to JavaScript file -->
-    <script src="js/scripts.js"></script>
 
+            <div class="contact__grid">
+                <!-- Left: message + email -->
+                <div class="contact__left">
+                    <p class="contact__intro">
+                        Interested in collaborating on security research, or just want to say hi? Feel free to reach out.
+                    </p>
+                    <a href="mailto:bottura@diag.uniroma1.it" class="contact__email">
+                        <span class="contact__email-label">email</span>
+                        <span class="contact__email-addr">bottura@diag.uniroma1.it</span>
+                        <span class="contact__email-arrow">↗</span>
+                    </a>
+                </div>
+ 
+                <!-- Right: social links -->
+                <div class="contact__right">
+                    <a href="https://github.com/NicolaBottura"
+                            class="contact__social"
+                            target="_blank" rel="noopener">
+                        <span class="contact__social-name">GitHub</span>
+                        <span class="contact__social-handle">NicolaBottura</span>
+                        <span class="contact__social-arrow">↗</span>
+                    </a>
+                    <a href="https://twitter.com/HoIIovv"
+                            class="contact__social"
+                            target="_blank" rel="noopener">
+                        <span class="contact__social-name">Twitter / X</span>
+                        <span class="contact__social-handle">@HoIIovv</span>
+                        <span class="contact__social-arrow">↗</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ"
+                            class="contact__social"
+                            target="_blank" rel="noopener">
+                        <span class="contact__social-name">Google Scholar</span>
+                        <span class="contact__social-handle">Nicola Bottura</span>
+                        <span class="contact__social-arrow">↗</span>
+                    </a>
+                </div> 
+            </div>
+        </div>
+    </section>
 
-    <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Connect</h4>
-        <ul>
-          <li><a href="https://github.com/NicolaBottura" target="_blank">GitHub</a></li>
-          <li><a href="https://twitter.com/HoIIovv" target="_blank">Twitter</a></li>
-          <li><a href="https://scholar.google.com/citations?user=O3Y5HPMAAAAJ" target="_blank">Google Scholar</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:bottura@diag.uniroma1.it">bottura@diag.uniroma1.it</a></p>
-        <p>© 2025 Nicola Bottura</p>
-      </div>
-    </div>
-  </footer>
-</body>
+    <!-- =====
+        FOOTER
+    ====== -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span class="footer__copy">© 2025 Nicola Bottura</span>
+            <nav class="footer__nav" aria-label="Footer navigation">
+                <a href="#about">About</a>
+                <a href="#publications">Publications</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <span class="footer__ghost">built with 👻</span>
+        </div>
+    </footer>
+
+    <!-- =================================
+        JS - Navbar scroll effect (subtle)
+    ================================== -->
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+        nav.style.borderBottomColor = window.scrollY > 20
+            ? 'var(--border-hover)'
+            : 'var(--border)';
+        }, { passive: true });
+    </script>
+
+    <script src="js/ghost.js"></script>
+
 </html>

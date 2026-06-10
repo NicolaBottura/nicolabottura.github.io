@@ -1,0 +1,107 @@
+/* ============================================================
+   GHOST WIDGET — ghost.css  (Three.js canvas edition)
+   ============================================================ */
+
+#ghost-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .4rem;
+  user-select: none;
+}
+
+/* Navigation menu */
+#ghost-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--accent-dim);
+  min-width: 185px;
+
+  opacity: 0;
+  transform: translateY(8px) scale(.97);
+  pointer-events: none;
+  transform-origin: bottom right;
+  transition:
+    opacity .22s cubic-bezier(0.4, 0, 0.2, 1),
+    transform .22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#ghost-nav.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.ghost-nav__item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .65rem 1rem;
+  background: var(--bg-1);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+
+.ghost-nav__item:hover {
+  background: var(--bg-2);
+  color: var(--accent);
+}
+
+.ghost-nav__num {
+  font-size: .6rem;
+  color: var(--text-3);
+  min-width: 1.5rem;
+}
+
+.ghost-nav__cv {
+  color: var(--accent) !important;
+  border-top: 1px solid var(--border);
+}
+
+/* Label pill */
+#ghost-label {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: .2rem .65rem;
+  border: 1px solid var(--border);
+  background: var(--bg-1);
+  transition: color .3s, border-color .3s;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#ghost-label.active {
+  color: var(--accent);
+  border-color: var(--accent-dim);
+}
+
+/* Canvas */
+#ghost-canvas {
+  /* glow */
+  filter: drop-shadow(0 4px 18px rgba(127, 119, 221, .28));
+  transition: filter .3s;
+  animation: ghost-widget-float 3.2s ease-in-out infinite;
+}
+
+#ghost-canvas:hover {
+  filter: drop-shadow(0 4px 28px rgba(127, 119, 221, .55));
+}
+
+@keyframes ghost-widget-float {
+  0%, 100% { transform: translateY(0px)  }
+  50%       { transform: translateY(-8px) }
+}
